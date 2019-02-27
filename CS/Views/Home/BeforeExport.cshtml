@@ -1,0 +1,65 @@
+@using DevExpress.Razor.Models
+@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript">
+    function ExportToPDF() {
+        var names = GetSelectedItemsNames();
+        if (!names) {
+            alert("Choose columns to export");
+            return;
+        }
+            
+        document.getElementById("ExportColumnsNames").value = names;
+        document.forms[0].submit();
+    }
+    function GetSelectedItemsNames() {
+        var selectedItems = columnNames.GetSelectedValues();
+        var result = "";
+        for (var index = 0; index < selectedItems.length; index++) {
+            result += selectedItems[index] + ";";
+        }
+        return result;
+    }
+</script>
+
+@{
+    string[] exportColumnsNames = ViewData["ExportColumnsNames"] == null 
+        ? new string[] { "FirstName", "LastName", "HireDate" } 
+        : ViewData["ExportColumnsNames"] as string[];
+}
+
+@using (Html.BeginForm("ExportTo", "Home")) {
+    <div style="padding: 10px;">
+        <br />
+        @Html.DevExpress().Button(settings => {
+            settings.Name = "exportToPdf";
+            settings.Text = "Export to PDF";
+            settings.ClientSideEvents.Click = "function(s, e) { ExportToPDF(); }";
+        }).GetHtml()
+        @Html.Hidden("ExportColumnsNames", null)
+    </div>
+    <div style="float:left;">
+        @Html.DevExpress().Label(settings => {
+           settings.Name = "title";
+           settings.Text = "Export columns: ";
+        }).GetHtml()
+    </div>
+    <div style="float:left; padding-left: 10px; padding-right: 10px;">
+        @Html.DevExpress().ListBox(settings => {
+            settings.Name = "columnNames";
+            settings.Properties.SelectionMode = ListEditSelectionMode.CheckColumn;
+            settings.Height = Unit.Pixel(225);
+       
+            foreach(string name in NorthwindDataProvider.GetColumnsNames()){
+                settings.Properties.Items.Add(name);
+                settings.Properties.Items.FindByText(name).Selected = exportColumnsNames.Contains(name);
+            }
+        }).GetHtml()
+    </div>
+    <div>
+        @Html.Partial("BeforeExportPartial", NorthwindDataProvider.GetEmployees())
+    </div>
+}
