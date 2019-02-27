@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>@ViewBag.Title</title>
+    
+    @Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
+    )
+    @Html.DevExpress().GetScripts( 
+        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new Script { ExtensionSuite = ExtensionSuite.Editors },
+        new Script { ExtensionSuite = ExtensionSuite.GridView }
+    )
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    @Html.DevExpress().Splitter(settings => {
+        settings.Name = "MainSplitter";
+        settings.AllowResize = false;
+        settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
+        settings.FullscreenMode = true;
+        settings.SeparatorVisible = false;
+        settings.Styles.Pane.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
+        settings.Styles.Pane.Paddings.Padding = System.Web.UI.WebControls.Unit.Pixel(0);
+
+
+        settings.Panes.Add(pane => {
+            pane.Name = "Content";
+            pane.PaneStyle.CssClass = "mainContentPane";
+            pane.MinSize = System.Web.UI.WebControls.Unit.Pixel(375);
+            pane.PaneStyle.BackColor = System.Drawing.Color.White;
+            pane.PaneStyle.BorderBottom.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(1);
+            pane.SetContent(RenderBody().ToHtmlString());
+        });
+
+    }).GetHtml()
+</body>
+</html>
