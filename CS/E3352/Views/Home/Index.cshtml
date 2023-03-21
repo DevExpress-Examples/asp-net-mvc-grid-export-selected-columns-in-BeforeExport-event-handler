@@ -6,7 +6,7 @@
 
 <script type="text/javascript">
     function ExportToPDF() {
-        var names = GetSelectedItemsNames();
+        var names = GetSelectedItemNames();
         if (!names) {
             alert("Choose columns to export");
             return;
@@ -15,7 +15,7 @@
         document.getElementById("ExportColumnsNames").value = names;
         document.forms[0].submit();
     }
-    function GetSelectedItemsNames() {
+    function GetSelectedItemNames() {
         var selectedItems = columnNames.GetSelectedValues();
         var result = "";
         for (var index = 0; index < selectedItems.length; index++) {
