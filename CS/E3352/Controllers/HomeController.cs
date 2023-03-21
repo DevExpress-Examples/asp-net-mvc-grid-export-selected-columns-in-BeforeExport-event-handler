@@ -6,31 +6,23 @@ using System.Web;
 using System.Web.Mvc;
 using E3352.Models;
 
-namespace E3352.Controllers
-{
-    public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
+namespace E3352.Controllers {
+    public class HomeController : Controller {
+        public ActionResult Index() {
             return View();    
         }
-        public ActionResult GridViewPartial()
-        {
+        public ActionResult GridViewPartial() {
             return PartialView("_GridViewPartial", TestModel.GetDS());
         }
-        public ActionResult ExportTo()
-        {
+        public ActionResult ExportTo() {
             return GridViewExtension.ExportToPdf(GridViewHelper.GetExportSettings(Request.Params["ExportColumnsNames"]), TestModel.GetDS());
         }
     }
-    public static class GridViewHelper
-    {
-        public static GridViewSettings GetExportSettings(string itemsNames)
-        {
+    public static class GridViewHelper {
+        public static GridViewSettings GetExportSettings(string itemsNames) {
             GridViewSettings gridVieewSettings = GetExportSettings();
 
-            if (!string.IsNullOrEmpty(itemsNames))
-            {
+            if (!string.IsNullOrEmpty(itemsNames)) {
                 string[] names = itemsNames.Split(';');
                 gridVieewSettings.SettingsExport.BeforeExport = (sender, e) => {
                     MVCxGridView gridView = sender as MVCxGridView;
@@ -39,8 +31,7 @@ namespace E3352.Controllers
 
                     gridView.Columns.Clear();
 
-                    foreach (var name in names)
-                    {
+                    foreach (var name in names) {
                         if (string.IsNullOrEmpty(name)) continue;
                         gridView.Columns.Add(new MVCxGridViewColumn(name));
                     }
@@ -49,8 +40,7 @@ namespace E3352.Controllers
 
             return gridVieewSettings;
         }
-        public static GridViewSettings GetExportSettings()
-        {
+        public static GridViewSettings GetExportSettings() {
             GridViewSettings gridVieewSettings = new GridViewSettings();
             gridVieewSettings.Name = "gridView";
             gridVieewSettings.KeyFieldName = "ID";
