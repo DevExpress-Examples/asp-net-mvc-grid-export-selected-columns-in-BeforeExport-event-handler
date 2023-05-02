@@ -35,7 +35,7 @@ function GetSelectedItemsNames() {
     return result;
 }
 ```
-On the server, the `BeforeExport` event handler clears the [Columns](http://docs.devexpress.devx/AspNet/DevExpress.Web.ASPxGridView.Columns) collection of the exported grid and populates it with the selected columns.
+On the server, the `BeforeExport` event handler clears the [Columns](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxGridView.Columns) collection of the exported grid and populates it with the selected columns.
 
 ```csharp
 gridVieewSettings.SettingsExport.BeforeExport = (sender, e) => {
