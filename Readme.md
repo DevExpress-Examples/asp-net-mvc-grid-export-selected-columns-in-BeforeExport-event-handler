@@ -57,4 +57,4 @@ gridVieewSettings.SettingsExport.BeforeExport = (sender, e) => {
 
 ## Documentation 
 
-- [Grid View Data Export](http://docs.devexpress.devx/AspNetMvc/16205/components/grid-view/export)
+- [Grid View Data Export](http://docs.devexpress.com/AspNetMvc/16205/components/grid-view/export)
