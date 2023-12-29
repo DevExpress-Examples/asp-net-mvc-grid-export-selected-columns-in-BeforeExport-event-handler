@@ -4,9 +4,6 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 # Grid View for ASP.NET MVC - How to use the BeforeExport event to filter the exported columns
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/172941046/)**
-<!-- run online end -->
 
 This example demonstrates how to export custom (selected) columns of [GridView](https://docs.devexpress.com/AspNetMvc/8966/components/grid-view) to a PDF file.
 
