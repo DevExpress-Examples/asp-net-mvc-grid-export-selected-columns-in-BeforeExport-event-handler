@@ -57,7 +57,7 @@ gridVieewSettings.SettingsExport.BeforeExport = (sender, e) => {
 
 - [Grid View Data Export](http://docs.devexpress.com/AspNetMvc/16205/components/grid-view/export)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=asp-net-mvc-grid-export-selected-columns-in-BeforeExport-event-handler&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=asp-net-mvc-grid-export-selected-columns-in-BeforeExport-event-handler&~~~was_helpful=no)
 
